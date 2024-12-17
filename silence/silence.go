@@ -1076,14 +1076,14 @@ func openReplace(filename string) (*replaceFile, error) {
 // now.
 func (s *Silences) logginSilences(msg string, sil *pb.Silence) {
 	var listMatchers []string
-	var matcher_type_operator = map[string]string{
+	matcherTypeOperator := map[string]string{
 		"EQUAL":      "=",
 		"REGEXP":     "=~",
 		"NOT_EQUAL":  "!=",
 		"NOT_REGEXP": "!~",
 	}
 	for _, matcher := range sil.Matchers {
-		ms := []string{matcher.Name, matcher_type_operator[matcher.Type.String()], matcher.Pattern}
+		ms := []string{matcher.Name, matcherTypeOperator[matcher.Type.String()], matcher.Pattern}
 		m := strings.Join(ms, ``)
 		listMatchers = append(listMatchers, m)
 	}
